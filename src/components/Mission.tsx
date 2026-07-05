@@ -9,13 +9,13 @@ export function Mission() {
     offset: ["start 80%", "end 20%"]
   });
 
-  const p1 = "We're building a network where security meets true decentralization — where messages route through mesh nodes, entirely off-grid, and every connection is mathematically immune to interception.";
-  const p2 = "A platform where unbreakable cryptography and the Digital Pigeon Protocol flow together — with no backend databases, no cloud storage, and zero-knowledge by design.";
+  const p1 = "We are building a network where private messaging meets true safety—where your words are sent directly from device to device, completely offline, and every connection is mathematically secured against hackers.";
+  const p2 = "An ecosystem where unbreakable protection and direct off-grid chat flow together—without central databases, without cloud leaks, and with 100% user ownership of data.";
 
-  const words1 = p1.split(" ");
-  const words2 = p2.split(" ");
+  const words1 = p1.split(/(?=—)|(?<=—)|\s+/);
+  const words2 = p2.split(/(?=—)|(?<=—)|\s+/);
 
-  const highlights = ["security", "decentralization", "off-grid", "unbreakable"];
+  const highlights = ["safety", "offline", "unbreakable", "ownership"];
 
   return (
     <section ref={containerRef} className="pt-0 pb-32 md:pb-44 container mx-auto px-6">
@@ -25,7 +25,7 @@ export function Mission() {
           loop 
           muted 
           playsInline 
-          className="w-full max-w-[800px] h-auto md:h-[800px] object-cover rounded-2xl grayscale"
+          className="w-full max-w-[800px] h-auto md:h-[800px] object-cover rounded-2xl"
         >
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260325_132944_a0d124bb-eaa1-4082-aa30-2310efb42b4b.mp4" type="video/mp4" />
         </video>
