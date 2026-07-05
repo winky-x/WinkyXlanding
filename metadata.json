@@ -1,0 +1,6 @@
+{
+  "name": "WinkyX",
+  "description": "The Anti-Fragile, Zero-Knowledge Mesh Messenger landing page. A dark monochrome design integrating advanced liquid glass effects and HLS video backgrounds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
