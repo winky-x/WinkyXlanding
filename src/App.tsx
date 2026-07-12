@@ -11,15 +11,15 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Preloader } from "./components/Preloader";
 import Lenis from "lenis";
-import { 
-  WhyChooseUs, 
-  Privacy, 
-  WhatIsPrivacy, 
-  Encryption, 
-  Architecture, 
-  ThreatModelPage, 
-  DigitalPigeonProtocol, 
-  OneTimePad 
+import {
+  WhyChooseUs,
+  Privacy,
+  WhatIsPrivacy,
+  Encryption,
+  Architecture,
+  ThreatModelPage,
+  DigitalPigeonProtocol,
+  OneTimePad
 } from "./pages";
 
 function Home() {
@@ -167,18 +167,18 @@ export default function App() {
 
       {/* Global Beta Registration Modal */}
       {showBetaModal && (
-        <div 
+        <div
           onClick={() => setShowBetaModal(false)}
           className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-md cursor-pointer"
         >
-          <div 
+          <div
             role="dialog"
             aria-modal="true"
             onClick={(e) => e.stopPropagation()}
             className="liquid-glass w-full max-w-md p-8 rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.5)] relative cursor-default"
             style={{ background: 'rgba(255, 255, 255, 0.06)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
           >
-            <button 
+            <button
               onClick={() => setShowBetaModal(false)}
               className="absolute top-4 right-4 text-lg w-8 h-8 flex items-center justify-center rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors duration-200"
               aria-label="Close dialog"
@@ -189,7 +189,7 @@ export default function App() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-ping mr-2"></span>
               <span className="text-xs uppercase tracking-[3px] font-semibold text-emerald-400">Beta Registration</span>
               <h3 className="text-2xl font-bold mt-4 text-white">Join the WinkyX Beta</h3>
-              
+
               {email ? (
                 <div className="mt-6 text-sm space-y-4 text-left">
                   <p className="leading-relaxed text-zinc-300 text-center">
@@ -198,13 +198,13 @@ export default function App() {
                   <p className="text-xs text-zinc-400 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10">
                     Note: Since WinkyX is serverless and offline-first, we will securely handshake with your device when a local mesh node is nearby to authorize your beta key.
                   </p>
-                  <button 
+                  <button
                     onClick={() => setShowBetaModal(false)}
                     className="w-full mt-4 bg-white/10 text-white font-semibold rounded-xl py-3 hover:bg-white/20 border border-white/15 transition-colors duration-200 cursor-pointer backdrop-blur-sm"
                   >
                     Got it, thanks!
                   </button>
-                  <button 
+                  <button
                     onClick={() => {
                       localStorage.removeItem("winkyx_beta_email");
                       setEmail("");
@@ -219,9 +219,9 @@ export default function App() {
                   <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
                     Enter your email to request beta access. Secure keys are synchronized locally via mesh.
                   </p>
-                  <input 
-                    type="email" 
-                    placeholder="name@example.com" 
+                  <input
+                    type="email"
+                    placeholder="name@example.com"
                     value={inputEmail}
                     onChange={(e) => setInputEmail(e.target.value)}
                     onKeyDown={(e) => {
@@ -236,7 +236,7 @@ export default function App() {
                   {submitError && (
                     <p className="text-red-400 text-xs mb-4">{submitError}</p>
                   )}
-                  <button 
+                  <button
                     type="button"
                     disabled={isSubmitting}
                     onClick={() => { if (inputEmail) submitBetaEmail(inputEmail); }}

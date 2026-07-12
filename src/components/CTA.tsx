@@ -14,15 +14,20 @@ export function CTA() {
     <section className="relative py-32 md:py-44 border-t border-border/30 overflow-hidden flex items-center justify-center min-h-[600px]">
       {/* Background Video (HLS) */}
       <div className="absolute inset-0 z-0">
-        <HlsVideo 
-          src="https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8"
+        <video 
           autoPlay 
           loop 
           muted 
           playsInline
           className="w-full h-full object-cover opacity-95"
-        />
+        >
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4" type="video/mp4" />
+        </video>
+        {/* Full coverage dark overlay for readability */}
         <div className="absolute inset-0 bg-background/25 z-[1]" />
+        
+        {/* Bottom fade to dark — matches Hero section */}
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent z-[2]" />
       </div>
 
       {/* Content */}

@@ -19,16 +19,18 @@ export function Mission() {
 
   return (
     <section ref={containerRef} className="pt-0 pb-32 md:pb-44 container mx-auto px-6">
-      <motion.div {...fadeUp(0.1)} className="flex justify-center mb-32">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="w-full max-w-[800px] h-auto md:h-[800px] object-cover rounded-2xl"
+      <motion.div {...fadeUp(0.1)} className="relative mb-32 mx-[2%] md:mx-[3%] overflow-hidden rounded-3xl border border-white/10">
+        <video  
+          autoPlay  
+          loop  
+          muted  
+          playsInline  
+          className="w-full h-auto md:h-[800px] object-cover"
         >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260325_132944_a0d124bb-eaa1-4082-aa30-2310efb42b4b.mp4" type="video/mp4" />
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260604_125109_19424216-4e2a-4560-b9f2-f1b5f6eb2c2e.mp4" type="video/mp4" />
         </video>
+        {/* Bottom fade to dark */}
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent" />
       </motion.div>
 
       <div className="max-w-4xl mx-auto space-y-10">
@@ -41,8 +43,8 @@ export function Mission() {
             const isHighlighted = highlights.includes(cleanWord);
 
             return (
-              <motion.span 
-                key={i} 
+              <motion.span  
+                key={i}  
                 style={{ opacity }}
                 className={isHighlighted ? "text-foreground" : "text-[hsl(var(--hero-subtitle))]"}
               >
@@ -60,8 +62,8 @@ export function Mission() {
             const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
 
             return (
-              <motion.span 
-                key={i} 
+              <motion.span  
+                key={i}  
                 style={{ opacity }}
                 className="text-[hsl(var(--hero-subtitle))]"
               >
