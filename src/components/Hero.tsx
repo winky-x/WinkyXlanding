@@ -144,7 +144,7 @@ export function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-[-2px] max-w-4xl mx-auto mb-4 leading-[1.1] flex flex-wrap justify-center"
+          className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-[-2px] max-w-none mx-auto mb-4 leading-[1.1] flex flex-wrap justify-center"
         >
           {headingParts.map((part, partIdx) => (
             part.break ? <div key={`break-${partIdx}`} className="w-full h-0" /> : (
@@ -152,7 +152,7 @@ export function Hero() {
               key={partIdx}
               className={
                 part.italic
-                  ? "font-serif italic font-normal inline-flex overflow-hidden"
+                  ? "font-serif italic font-normal inline-flex overflow-hidden tracking-[6px]"
                   : "inline-flex overflow-hidden"
               }
             >
