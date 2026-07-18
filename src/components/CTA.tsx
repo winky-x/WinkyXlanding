@@ -1,17 +1,29 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { fadeUp } from "../lib/animations";
 import { HlsVideo } from "./HlsVideo";
 
 export function CTA() {
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 90%", "start 20%"]
+  });
+
+  const sectionScale = useTransform(scrollYProgress, [0, 1], [0.96, 1.0]);
 
   const handleDownloadBeta = () => {
     window.dispatchEvent(new CustomEvent("open-beta-modal"));
   };
 
   return (
-    <section className="relative py-32 md:py-44 border-t border-border/30 overflow-hidden flex items-center justify-center min-h-[600px]">
+    <motion.section 
+      ref={containerRef}
+      style={{ scale: sectionScale }}
+      className="relative py-32 md:py-44 border-t border-border/30 overflow-hidden flex items-center justify-center min-h-[600px] origin-bottom"
+    >
       {/* Background Video (HLS) */}
       <div className="absolute inset-0 z-0">
         <video 
@@ -34,9 +46,9 @@ export function CTA() {
       <div className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center">
         <motion.div 
           {...fadeUp(0.1)}
-          className="mb-8"
+          className="mb-8 relative"
         >
-          <img src="/logo-white.png" alt="WinkyX Logo" className="h-16 sm:h-24 w-auto object-contain mx-auto" />
+          <img src="/logo-white.png" alt="WinkyX Logo" className="h-16 sm:h-24 w-auto object-contain mx-auto animate-glow-bloom relative z-10" />
         </motion.div>
 
         <motion.h2 {...fadeUp(0.2)} className="text-5xl md:text-7xl font-serif italic mb-6">
@@ -49,23 +61,23 @@ export function CTA() {
 
         <motion.div {...fadeUp(0.4)} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 sm:px-0">
           <motion.button 
-            whileHover={{ scale: 1.03 }} 
+            whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 30px -10px rgba(16, 185, 129, 0.4)" }} 
             whileTap={{ scale: 0.98 }}
             onClick={handleDownloadBeta}
-            className="bg-foreground text-background font-medium rounded-lg px-8 py-3.5 whitespace-nowrap cursor-pointer w-full sm:w-auto"
+            className="bg-foreground text-background font-medium rounded-lg px-8 py-3.5 whitespace-nowrap cursor-pointer w-full sm:w-auto transition-all"
           >
             Download Beta
           </motion.button>
           <motion.button 
-            whileHover={{ scale: 1.03 }} 
+            whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 30px -10px rgba(255, 255, 255, 0.1)" }} 
             whileTap={{ scale: 0.98 }}
             onClick={() => navigate("/architecture")}
-            className="liquid-glass font-medium rounded-lg px-8 py-3.5 whitespace-nowrap text-foreground cursor-pointer w-full sm:w-auto"
+            className="liquid-glass font-medium rounded-lg px-8 py-3.5 whitespace-nowrap text-foreground cursor-pointer w-full sm:w-auto transition-all"
           >
             Read Architecture
           </motion.button>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

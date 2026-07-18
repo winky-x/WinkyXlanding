@@ -21,6 +21,7 @@ import {
   DigitalPigeonProtocol,
   OneTimePad
 } from "./pages";
+import GradualBlur from "./components/GradualBlur";
 
 function Home() {
   return (
@@ -123,12 +124,12 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2.2,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.8,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
 
@@ -164,6 +165,19 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+
+      {/* Global GradualBlur — always on screen at bottom */}
+      <GradualBlur
+        target="page"
+        position="bottom"
+        height="8vh"
+        strength={1.5}
+        divCount={8}
+        curve="bezier"
+        exponential={true}
+        opacity={1}
+        style={{ zIndex: 40 }} 
+      />
 
       {/* Global Beta Registration Modal */}
       {showBetaModal && (

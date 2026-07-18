@@ -48,11 +48,15 @@ export function SearchChanged() {
             return (
               <motion.div
                 key={feature.name}
-                {...fadeUp(0.2 + i * 0.1)}
-                className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, scale: 0.85, y: 40 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.15 }}
+                className="flex flex-col items-center text-center group"
               >
-                <div className="w-[200px] h-[200px] mb-8 liquid-glass rounded-2xl flex items-center justify-center">
-                  <Icon className="w-16 h-16 text-foreground/80 stroke-[1.5]" />
+                <div className="w-[200px] h-[200px] mb-8 liquid-glass rounded-2xl flex items-center justify-center relative">
+                  <div className="absolute inset-0 rounded-2xl bg-emerald-500/0 group-hover:animate-glow-pulse transition-all duration-700" />
+                  <Icon className="w-16 h-16 text-foreground/80 stroke-[1.5] group-hover:text-emerald-400 group-hover:scale-110 transition-all duration-500 z-10" />
                 </div>
                 <h3 className="font-semibold text-base mb-2">{feature.name}</h3>
                 <p className="text-zinc-400 text-sm max-w-xs">{feature.description}</p>

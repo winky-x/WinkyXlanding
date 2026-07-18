@@ -17,20 +17,24 @@ export function Mission() {
 
   const highlights = ["safety", "offline", "unbreakable", "ownership"];
 
+  // Video Parallax Offset
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
   return (
     <section ref={containerRef} className="pt-0 pb-32 md:pb-44 container mx-auto px-6">
-      <motion.div {...fadeUp(0.1)} className="relative mb-32 mx-[2%] md:mx-[3%] overflow-hidden rounded-3xl border border-white/10">
-        <video  
+      <motion.div {...fadeUp(0.1)} className="relative mb-32 mx-[2%] md:mx-[3%] overflow-hidden rounded-3xl border border-white/10 h-[50vh] md:h-[80vh]">
+        <motion.video  
           autoPlay  
           loop  
           muted  
           playsInline  
-          className="w-full h-auto md:h-[800px] object-cover"
+          className="absolute inset-0 w-full h-[120%] object-cover"
+          style={{ y: videoY, top: "-10%" }}
         >
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260604_125109_19424216-4e2a-4560-b9f2-f1b5f6eb2c2e.mp4" type="video/mp4" />
-        </video>
+        </motion.video>
         {/* Bottom fade to dark */}
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent z-10" />
       </motion.div>
 
       <div className="max-w-4xl mx-auto space-y-10">
@@ -39,13 +43,15 @@ export function Mission() {
             const start = i / (words1.length + words2.length);
             const end = start + 0.05;
             const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+            const y = useTransform(scrollYProgress, [start, end], [12, 0]);
+            
             const cleanWord = word.replace(/[^a-zA-Z-]/g, '').toLowerCase();
             const isHighlighted = highlights.includes(cleanWord);
 
             return (
               <motion.span  
                 key={i}  
-                style={{ opacity }}
+                style={{ opacity, y }}
                 className={isHighlighted ? "text-foreground" : "text-[hsl(var(--hero-subtitle))]"}
               >
                 {word}
@@ -60,11 +66,12 @@ export function Mission() {
             const start = index / (words1.length + words2.length);
             const end = start + 0.05;
             const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+            const y = useTransform(scrollYProgress, [start, end], [12, 0]);
 
             return (
               <motion.span  
                 key={i}  
-                style={{ opacity }}
+                style={{ opacity, y }}
                 className="text-[hsl(var(--hero-subtitle))]"
               >
                 {word}
