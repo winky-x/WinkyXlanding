@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { SearchChanged } from "./components/SearchChanged";
@@ -19,7 +19,9 @@ import {
   Architecture,
   ThreatModelPage,
   DigitalPigeonProtocol,
-  OneTimePad
+  OneTimePad,
+  Testing,
+  Testing2
 } from "./pages";
 import GradualBlur from "./components/GradualBlur";
 
@@ -28,6 +30,7 @@ function Home() {
     <>
       <Hero />
       <SearchChanged />
+      <Testing2 />
       <Mission />
       <Solution />
       <ThreatModel />
@@ -37,6 +40,9 @@ function Home() {
 }
 
 export default function App() {
+  const location = useLocation();
+  const isTestingPage = location.pathname === "/testing";
+  
   const [showBetaModal, setShowBetaModal] = useState(false);
   const [email, setEmail] = useState(() => {
     try {
@@ -150,7 +156,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background font-sans relative">
       <Preloader />
       <ScrollToTop />
-      <Navbar />
+      {!isTestingPage && <Navbar />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -162,9 +168,11 @@ export default function App() {
           <Route path="/threat-model" element={<ThreatModelPage />} />
           <Route path="/digital-pigeon-protocol" element={<DigitalPigeonProtocol />} />
           <Route path="/one-time-pad" element={<OneTimePad />} />
+          <Route path="/testing" element={<Testing />} />
+          <Route path="/testing2" element={<Testing2 />} />
         </Routes>
       </main>
-      <Footer />
+      {!isTestingPage && <Footer />}
 
       {/* Global GradualBlur — always on screen at bottom */}
       <GradualBlur

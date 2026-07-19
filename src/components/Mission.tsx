@@ -18,7 +18,7 @@ export function Mission() {
   const highlights = ["safety", "offline", "unbreakable", "ownership"];
 
   // Video Parallax Offset
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
     <section ref={containerRef} className="pt-0 pb-32 md:pb-44 container mx-auto px-6">

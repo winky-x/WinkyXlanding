@@ -231,6 +231,7 @@ export function ThreatModelPage() {
           </p>
         </div>
       </div>
+
     </PageLayout>
   );
 }
@@ -296,3 +297,6 @@ export function OneTimePad() {
     </PageLayout>
   );
 }
+
+export * from './Testing';
+export * from './Testing2';

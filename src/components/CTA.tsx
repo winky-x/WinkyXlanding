@@ -64,7 +64,7 @@ export function CTA() {
             whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 30px -10px rgba(16, 185, 129, 0.4)" }} 
             whileTap={{ scale: 0.98 }}
             onClick={handleDownloadBeta}
-            className="bg-foreground text-background font-medium rounded-lg px-8 py-3.5 whitespace-nowrap cursor-pointer w-full sm:w-auto transition-all"
+            className="bg-foreground text-background font-medium rounded-lg px-8 py-3.5 whitespace-nowrap cursor-pointer w-full sm:w-auto transition-colors"
           >
             Download Beta
           </motion.button>
@@ -72,7 +72,7 @@ export function CTA() {
             whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 30px -10px rgba(255, 255, 255, 0.1)" }} 
             whileTap={{ scale: 0.98 }}
             onClick={() => navigate("/architecture")}
-            className="liquid-glass font-medium rounded-lg px-8 py-3.5 whitespace-nowrap text-foreground cursor-pointer w-full sm:w-auto transition-all"
+            className="liquid-glass font-medium rounded-lg px-8 py-3.5 whitespace-nowrap text-foreground cursor-pointer w-full sm:w-auto transition-colors"
           >
             Read Architecture
           </motion.button>
